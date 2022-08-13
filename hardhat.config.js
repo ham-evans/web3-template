@@ -1,17 +1,21 @@
 require("dotenv").config();
-import "@typechain/hardhat";
-import "@nomiclabs/hardhat-ethers";
-import "@nomiclabs/hardhat-waffle";
+require("@typechain/hardhat");
+require("@nomiclabs/hardhat-ethers");
+require("@nomiclabs/hardhat-waffle");
 
 module.exports = {
   solidity: {
-    version: "0.8.4",
+    version: "0.8.9",
     settings: {
       optimizer: {
         enabled: true,
         runs: 200,
       },
     },
+  },
+  typechain: {
+    outDir: "lib/generated",
+    target: "ethers-v5",
   },
   networks: {
     rinkeby: {
