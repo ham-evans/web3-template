@@ -1,7 +1,13 @@
+import Button from "@components/button";
+import Footer from "@components/footer";
 import type { NextPage } from "next";
 import Head from "next/head";
+import Navbar from "../components/navbar";
 
 const Home: NextPage = () => {
+  const connectWallet = () => {
+    console.log("connecting");
+  };
   return (
     <div>
       <Head>
@@ -10,9 +16,20 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="w-full h-screen text-center flex flex-col m-auto">
-        here
+      <Navbar />
+
+      <div className="w-full h-[calc(100vh-80px)] text-center flex flex-col">
+        <div className="m-auto">
+          <Button
+            text="Connect Wallet"
+            onClick={() => {
+              connectWallet();
+            }}
+          />
+        </div>
       </div>
+
+      <Footer />
     </div>
   );
 };
