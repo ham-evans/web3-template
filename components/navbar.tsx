@@ -5,7 +5,7 @@ import { Disclosure } from "@headlessui/react";
 import MenuIcon from "@heroicons/react/outline/MenuIcon";
 import XIcon from "@heroicons/react/outline/XIcon";
 
-import Button from "@components/button";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export const navigation = [
   { name: "Page1", href: "/" },
@@ -68,7 +68,11 @@ export default function Header() {
               </div>
 
               <div className="grid grid-flow-col gap-1 sm:gap-4">
-                <Button text="Connect Wallet" href="/" responsive />
+                <ConnectButton
+                  accountStatus="address"
+                  chainStatus="name"
+                  showBalance={false}
+                />
               </div>
 
               {/* hamburger icon, visible mobile only */}
