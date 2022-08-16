@@ -1,9 +1,9 @@
 import { useConnectModal } from "@rainbow-me/rainbowkit";
-import { useAccount, useConnect } from "wagmi";
+import ReturnWagmi from "hooks/mounted";
 
 export const Hero = () => {
   const { openConnectModal } = useConnectModal();
-  const { address, isConnected } = useAccount();
+  const { address, isConnected } = ReturnWagmi();
   return (
     <div className="m-auto">
       {openConnectModal && (

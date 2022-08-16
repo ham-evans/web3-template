@@ -7,11 +7,6 @@ import Navbar from "../components/navbar";
 import { Hero } from "./hero";
 
 const Home: NextPage = () => {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   return (
     <div>
       <Head>
@@ -23,7 +18,7 @@ const Home: NextPage = () => {
       <Navbar />
 
       <div className="w-full h-[calc(100vh-80px)] text-center flex flex-col">
-        {mounted ? <Hero /> : <></>}
+        <Hero />
       </div>
 
       <Footer />
