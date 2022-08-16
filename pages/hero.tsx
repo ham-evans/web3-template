@@ -1,5 +1,5 @@
 import { useConnectModal } from "@rainbow-me/rainbowkit";
-import ReturnWagmi from "hooks/mounted";
+import ReturnWagmi from "@hooks/mounted";
 
 export const Hero = () => {
   const { openConnectModal } = useConnectModal();
