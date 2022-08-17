@@ -3,7 +3,8 @@ import { Base1155__factory } from "./generated";
 
 export const CONTRACT_ADDRESS = "0x4665cab32fa90686bda9d02f0ee69ec24411748b";
 
-export const BLOCKTRACKER = "https://etherscan.io";
+export const CHAIN_ID = 5; //goerli
+export const BLOCKTRACKER = "https://goerli.etherscan.io/tx/"; //goerli
 export const RPC_ID = "9b52e43b93e14ee983c8d25f23b90f21";
 export const RPC = `https://goerli.infura.io/v3/${RPC_ID}`;
 export const MARKETPLACE_LINK = "https://opensea.io/assets/ethereum/";
