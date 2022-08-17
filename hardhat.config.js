@@ -1,6 +1,7 @@
 require("dotenv").config();
 require("@typechain/hardhat");
 require("@nomiclabs/hardhat-ethers");
+require("@nomiclabs/hardhat-etherscan");
 require("@nomiclabs/hardhat-waffle");
 
 module.exports = {
@@ -18,20 +19,20 @@ module.exports = {
     target: "ethers-v5",
   },
   networks: {
-    rinkeby: {
-      url: process.env.RINKEBY_INFURA_KEY || "",
+    goerli: {
+      url: process.env.GOERLI_INFURA_KEY || "",
       accounts:
         process.env.DEV_PRIVATE_KEY !== undefined
           ? [process.env.DEV_PRIVATE_KEY]
           : [],
     },
-    mainnet: {
-      url: process.env.MAINNET_INFURA_KEY || "",
-      accounts:
-        process.env.DEV_PRIVATE_KEY !== undefined
-          ? [process.env.DEV_PRIVATE_KEY]
-          : [],
-    },
+    // mainnet: {
+    //   url: process.env.MAINNET_INFURA_KEY || "",
+    //   accounts:
+    //     process.env.DEV_PRIVATE_KEY !== undefined
+    //       ? [process.env.DEV_PRIVATE_KEY]
+    //       : [],
+    // },
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY,

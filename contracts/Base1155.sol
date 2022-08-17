@@ -21,7 +21,7 @@ contract Base1155 is Authorized, ERC1155Supply, PaymentSplitter {
     mapping(uint256 => Token) private tokens;
 
     struct Token {
-        bool paused;
+        bool saleOpen;
         string tokenURI;
         mapping(address => uint256) minted;
     }
@@ -46,11 +46,11 @@ contract Base1155 is Authorized, ERC1155Supply, PaymentSplitter {
     @dev Adds a new token.
     */
     function addToken(
-        bool _paused,
+        bool _saleOpen,
         string memory _tokenURI
     ) public onlyAuthorized {
         Token storage t = tokens[counter.current()];
-        t.paused = _paused;
+        t.saleOpen = _saleOpen;
         t.tokenURI = _tokenURI;
 
         counter.increment();
@@ -61,13 +61,13 @@ contract Base1155 is Authorized, ERC1155Supply, PaymentSplitter {
     */
     function editToken(
         uint256 _tokenID,
-        bool _paused,
+        bool _saleOpen,
         string memory _tokenURI
     ) external onlyAuthorized {
         require(exists(_tokenID), "EditToken: Token ID does not exist");
 
         Token storage t = tokens[_tokenID];
-        t.paused = _paused; 
+        t.saleOpen = _saleOpen; 
         t.tokenURI = _tokenURI;  
     }
 
@@ -83,10 +83,10 @@ contract Base1155 is Authorized, ERC1155Supply, PaymentSplitter {
      /**
     @dev Set token pause state.
      */
-    function setTokenPaused ( uint256 _tokenID, bool _paused ) external onlyAuthorized {
+    function setTokensaleOpen ( uint256 _tokenID, bool _saleOpen ) external onlyAuthorized {
         require(exists(_tokenID), "EditTokenURI: Token ID does not exist");
         Token storage t = tokens[_tokenID];
-        t.paused = _paused;  
+        t.saleOpen = _saleOpen;  
     }
 
     /**
@@ -115,7 +115,7 @@ contract Base1155 is Authorized, ERC1155Supply, PaymentSplitter {
     */
     function isSaleOpen( uint256 _tokenID ) public view returns ( bool ) {
         require( exists(_tokenID), "isSaleClosed: token does not exist" );
-        return tokens[_tokenID].paused;
+        return tokens[_tokenID].saleOpen;
     }
 
     /**
