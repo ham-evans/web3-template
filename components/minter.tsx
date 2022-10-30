@@ -17,9 +17,6 @@ export const Minter = () => {
     contractInterface: Base1155__factory.abi,
     functionName: "mint",
     args: [tokenId, quantity],
-    onSettled(data, error) {
-      console.log("Settled", { data, error });
-    },
   });
 
   const { data, isLoading, isSuccess, write, error, status, writeAsync } =
